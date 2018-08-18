@@ -24,11 +24,11 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         
         self.meterTextFeild.delegate = self
         
-         meterTextFeild.addTarget(self, action: #selector(textChanged), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
-         footTextFeild.addTarget(self, action: #selector(textChanged2), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
-         yardTextField.addTarget(self, action: #selector(textChanged3), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
-         kilometerTextField.addTarget(self, action: #selector(textChanged4), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
-         mileTextField.addTarget(self, action: #selector(textChanged5), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         meterTextFeild.addTarget(self, action: #selector(meterconvert), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         footTextFeild.addTarget(self, action: #selector(footconvert), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         yardTextField.addTarget(self, action: #selector(yardconvert), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         kilometerTextField.addTarget(self, action: #selector(kiloconvert), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         mileTextField.addTarget(self, action: #selector(mileconvert), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
         
         meterTextFeild.clearsOnBeginEditing = true // clear the current user input if user try to edit textfield
         footTextFeild.clearsOnBeginEditing = true
@@ -52,7 +52,7 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         return allowedCharcterSet.isSuperset(of: typedCharcterSet)
     }
     
-    @objc func textChanged() { //calculate the convertion
+    @objc func meterconvert() { //calculate the convertion
         let sum11 = Double(meterTextFeild.text!)
         
         footTextFeild.text = String(describing:(sum11 ?? 0) / 0.3048)
@@ -61,7 +61,7 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         mileTextField.text = String(describing:(sum11 ?? 0) * 0.00062137)
         
     }
-    @objc func textChanged2() { //calculate the convertion
+    @objc func footconvert() { //calculate the convertion
         let sum11 = Double(footTextFeild.text!)
         
         meterTextFeild.text = String(describing:(sum11 ?? 0) * 0.3048 )
@@ -70,7 +70,7 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         mileTextField.text = String(describing:(sum11 ?? 0) * 0.00018939)
         
     }
-    @objc func textChanged3() { //calculate the convertion
+    @objc func yardconvert() { //calculate the convertion
         let sum11 = Double(yardTextField.text!)
         
         footTextFeild.text = String(describing:(sum11 ?? 0) * 3.0000)
@@ -79,7 +79,7 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         mileTextField.text = String(describing:(sum11 ?? 0) *  0.00056818)
         
     }
-    @objc func textChanged4() { //calculate the convertion
+    @objc func kiloconvert() { //calculate the convertion
         let sum11 = Double(kilometerTextField.text!)
         
         footTextFeild.text = String(describing:(sum11 ?? 0) * 3280.8398950131)
@@ -88,7 +88,7 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         mileTextField.text = String(describing:(sum11 ?? 0) * 0.6213711922)
         
     }
-    @objc func textChanged5() { //calculate the convertion
+    @objc func mileconvert() { //calculate the convertion
         let sum11 = Double(mileTextField.text!)
         
         footTextFeild.text = String(describing:(sum11 ?? 0) * 5280.0)

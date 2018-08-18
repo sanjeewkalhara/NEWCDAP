@@ -24,10 +24,10 @@ class FouthViewController: UIViewController,UITextFieldDelegate {
         
         self.meterTextField.delegate = self
         
-        meterTextField.addTarget(self, action: #selector(textChanged), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
-        feetTextField.addTarget(self, action: #selector(textChanged1), for: .editingChanged)
-        kilometerTextField.addTarget(self, action: #selector(textChanged2), for: .editingChanged)
-        milesTextField.addTarget(self, action: #selector(textChanged3), for: .editingChanged)
+        meterTextField.addTarget(self, action: #selector(meterconvert), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+        feetTextField.addTarget(self, action: #selector(feetconvert), for: .editingChanged)
+        kilometerTextField.addTarget(self, action: #selector(kiloconvert), for: .editingChanged)
+        milesTextField.addTarget(self, action: #selector(milesconvert), for: .editingChanged)
         
         meterTextField.clearsOnBeginEditing = true // clear the current user input if user try to edit textfield
         feetTextField.clearsOnBeginEditing = true
@@ -49,7 +49,7 @@ class FouthViewController: UIViewController,UITextFieldDelegate {
         return allowedCharcterSet.isSuperset(of: typedCharcterSet)
     }
     
-    @objc func textChanged() { //calculate the convertion
+    @objc func meterconvert() { //calculate the convertion
         let sum11 = Double(meterTextField.text!)
         
         feetTextField.text = String(describing:(sum11 ?? 0) * 196.850394)
@@ -57,7 +57,7 @@ class FouthViewController: UIViewController,UITextFieldDelegate {
         milesTextField.text = String(describing:(sum11 ?? 0) * 2.236936)
         
     }
-    @objc func textChanged1() { //calculate the convertion
+    @objc func feetconvert() { //calculate the convertion
         let sum11 = Double(feetTextField.text!)
         
         meterTextField.text = String(describing:(sum11 ?? 0) * 0.00508)
@@ -65,7 +65,7 @@ class FouthViewController: UIViewController,UITextFieldDelegate {
         milesTextField.text = String(describing:(sum11 ?? 0) * 0.0113636)
         
     }
-    @objc func textChanged2() { //calculate the convertion
+    @objc func kiloconvert() { //calculate the convertion
         let sum11 = Double(kilometerTextField.text!)
         
         feetTextField.text = String(describing:(sum11 ?? 0) * 54.68)
@@ -73,7 +73,7 @@ class FouthViewController: UIViewController,UITextFieldDelegate {
         milesTextField.text = String(describing:(sum11 ?? 0) * 0.6213711922)
         
     }
-    @objc func textChanged3() { //calculate the convertion
+    @objc func milesconvert() { //calculate the convertion
         let sum11 = Double(milesTextField.text!)
         
         feetTextField.text = String(describing:(sum11 ?? 0) * 88)

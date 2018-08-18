@@ -23,9 +23,9 @@ class SecondViewController: UIViewController,UITextFieldDelegate  {
         
         self.celsiusTextFeild.delegate = self
         
-        celsiusTextFeild.addTarget(self, action: #selector(textChanged), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
-        kelvinTextFeild.addTarget(self, action: #selector(textChanged2), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
-        fahrenheitTextField.addTarget(self, action: #selector(textChanged3), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
+        celsiusTextFeild.addTarget(self, action: #selector(celsiusconvert), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
+        kelvinTextFeild.addTarget(self, action: #selector(kelvinconvert), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
+        fahrenheitTextField.addTarget(self, action: #selector(fahrenheitconvert), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
         
         celsiusTextFeild.clearsOnBeginEditing = true   // clear the current user input if user try to edit textfield
         kelvinTextFeild.clearsOnBeginEditing = true
@@ -46,7 +46,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate  {
         return allowedCharcterSet.isSuperset(of: typedCharcterSet)
     }
     
-    @objc func textChanged() {  //calculate the convertion
+    @objc func celsiusconvert() {  //calculate the convertion
         let sum11 = Double(celsiusTextFeild.text!)
         
         kelvinTextFeild.text = String(describing:(sum11 ?? 0) + 273.15)
@@ -55,7 +55,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate  {
         
         
     }
-    @objc func textChanged2() {  //calculate the convertion
+    @objc func kelvinconvert() {  //calculate the convertion
         
         let sum11 = Double(kelvinTextFeild.text!)
         
@@ -65,7 +65,7 @@ class SecondViewController: UIViewController,UITextFieldDelegate  {
         
         
     }
-    @objc func textChanged3() {  //calculate the convertion
+    @objc func fahrenheitconvert() {  //calculate the convertion
         let sum11 = Double(fahrenheitTextField.text!)
         let cel1 = sum11! - 32.00
         let kelvin = sum11! + 459.67

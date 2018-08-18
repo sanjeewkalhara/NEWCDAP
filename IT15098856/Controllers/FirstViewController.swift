@@ -24,10 +24,10 @@ class FirstViewController: UIViewController,UITextFieldDelegate  {
         
         self.gramTextfeiled.delegate = self
         
-        gramTextfeiled.addTarget(self, action: #selector(textChanged), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
-        ounceTextField.addTarget(self, action: #selector(textChanged2), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
-        poundTextFeild.addTarget(self, action: #selector(textChanged3), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
-        kilogramTextfeiled.addTarget(self, action: #selector(textChanged4), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
+        gramTextfeiled.addTarget(self, action: #selector(gramconvert), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
+        ounceTextField.addTarget(self, action: #selector(ounceconvert), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
+        poundTextFeild.addTarget(self, action: #selector(poundconvert), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
+        kilogramTextfeiled.addTarget(self, action: #selector(kiloconvert), for: .editingChanged) //identify textfield chaing and call the function textchanged to calculation
         
         gramTextfeiled.clearsOnBeginEditing = true // clear the current user input if user try to edit textfield
         ounceTextField.clearsOnBeginEditing = true
@@ -52,7 +52,7 @@ class FirstViewController: UIViewController,UITextFieldDelegate  {
         return allowedCharcterSet.isSuperset(of: typedCharcterSet)
     }
     
-    @objc func textChanged() { //calculate the convertion
+    @objc func gramconvert() { //calculate the convertion
         let sum11 = Double(gramTextfeiled.text!)
         
         kilogramTextfeiled.text = String(describing:(sum11 ?? 0) / 1000)
@@ -60,7 +60,7 @@ class FirstViewController: UIViewController,UITextFieldDelegate  {
         ounceTextField.text = String(describing:(sum11 ?? 0) * 0.035274)
         
     }
-    @objc func textChanged2() { //calculate the convertion
+    @objc func ounceconvert() { //calculate the convertion
         let sum11 = Double(ounceTextField.text!)
         
         gramTextfeiled.text = String(describing:(sum11 ?? 0) / 0.035274)
@@ -68,7 +68,7 @@ class FirstViewController: UIViewController,UITextFieldDelegate  {
         kilogramTextfeiled.text = String(describing:(sum11 ?? 0) / 35.274)
         
     }
-    @objc func textChanged3() { //calculate the convertion
+    @objc func poundconvert() { //calculate the convertion
         let sum11 = Double(poundTextFeild.text!)
         
         kilogramTextfeiled.text = String(describing:(sum11 ?? 0) * 0.45359237)
@@ -76,7 +76,7 @@ class FirstViewController: UIViewController,UITextFieldDelegate  {
         gramTextfeiled.text = String(describing:(sum11 ?? 0) * 453.59237)
         
     }
-    @objc func textChanged4() { //calculate the convertion
+    @objc func kiloconvert() { //calculate the convertion
         let sum11 = Double(kilogramTextfeiled.text!)
         
         gramTextfeiled.text = String(describing:(sum11 ?? 0) * 1000)
