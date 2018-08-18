@@ -24,8 +24,17 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         
         self.meterTextFeild.delegate = self
         
-        meterTextFeild.addTarget(self, action: #selector(textChanged), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         meterTextFeild.addTarget(self, action: #selector(textChanged), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         footTextFeild.addTarget(self, action: #selector(textChanged2), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         yardTextField.addTarget(self, action: #selector(textChanged3), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         kilometerTextField.addTarget(self, action: #selector(textChanged4), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+         mileTextField.addTarget(self, action: #selector(textChanged5), for: .editingChanged)  //identify textfield chaing and call the function textchanged to calculation
+        
         meterTextFeild.clearsOnBeginEditing = true // clear the current user input if user try to edit textfield
+        footTextFeild.clearsOnBeginEditing = true
+        yardTextField.clearsOnBeginEditing = true
+        kilometerTextField.clearsOnBeginEditing = true
+        mileTextField.clearsOnBeginEditing = true
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -50,6 +59,42 @@ class ThirdViewController: UIViewController,UITextFieldDelegate {
         yardTextField.text = String(describing:(sum11 ?? 0) * 1.0936)
         kilometerTextField.text = String(describing:(sum11 ?? 0) / 1000.00)
         mileTextField.text = String(describing:(sum11 ?? 0) * 0.00062137)
+        
+    }
+    @objc func textChanged2() { //calculate the convertion
+        let sum11 = Double(footTextFeild.text!)
+        
+        meterTextFeild.text = String(describing:(sum11 ?? 0) * 0.3048 )
+        yardTextField.text = String(describing:(sum11 ?? 0) * 0.33333)
+        kilometerTextField.text = String(describing:(sum11 ?? 0) *  0.0003048)
+        mileTextField.text = String(describing:(sum11 ?? 0) * 0.00018939)
+        
+    }
+    @objc func textChanged3() { //calculate the convertion
+        let sum11 = Double(yardTextField.text!)
+        
+        footTextFeild.text = String(describing:(sum11 ?? 0) * 3.0000)
+        meterTextFeild.text = String(describing:(sum11 ?? 0) * 0.9144)
+        kilometerTextField.text = String(describing:(sum11 ?? 0) * 0.0009144)
+        mileTextField.text = String(describing:(sum11 ?? 0) *  0.00056818)
+        
+    }
+    @objc func textChanged4() { //calculate the convertion
+        let sum11 = Double(kilometerTextField.text!)
+        
+        footTextFeild.text = String(describing:(sum11 ?? 0) * 3280.8398950131)
+        yardTextField.text = String(describing:(sum11 ?? 0) * 1093.6132983377)
+        meterTextFeild.text = String(describing:(sum11 ?? 0) * 1000.00)
+        mileTextField.text = String(describing:(sum11 ?? 0) * 0.6213711922)
+        
+    }
+    @objc func textChanged5() { //calculate the convertion
+        let sum11 = Double(mileTextField.text!)
+        
+        footTextFeild.text = String(describing:(sum11 ?? 0) * 5280.0)
+        yardTextField.text = String(describing:(sum11 ?? 0) * 1760.0)
+        kilometerTextField.text = String(describing:(sum11 ?? 0) * 1.609344)
+        meterTextFeild.text = String(describing:(sum11 ?? 0) / 0.00062137 )
         
     }
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
